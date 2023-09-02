@@ -41,17 +41,17 @@ def base_model():
     return bmodel
 
 st.markdown(heading_style, unsafe_allow_html=True)
-Gender=st.selectbox('Select your gender',['Male','Female'])
-Married=st.selectbox('Married ?',['Yes','No'])
-Dependents=st.slider('Dependents',0,3,0)
-Education=st.selectbox('Ed',['Graduate','Not Graduate'])
-Self_Employed=st.selectbox('self',['Yes','No'])
-ApplicantIncome=st.number_input('appki', min_value=0)
-CoapplicantIncome=st.number_input('coap', min_value=0)
-LoanAmount=st.number_input('laon am',min_value=0)
-Loan_Amount_Term=st.number_input('lmt',min_value=0)
-Credit_History=st.slider('creh',0,1,0)
-Property_Area=st.selectbox('property',['Urban','Rural','Semiurban'])
+Gender=st.selectbox('Select your gender...',['Male','Female'])
+Married=st.selectbox('Are you Married or Not?',['Yes','No'])
+Dependents=st.slider('How many dependents you have..',0,10,0)
+Education=st.selectbox('Are you a graduate or not?',['Graduate','Not Graduate'])
+Self_Employed=st.selectbox('Are you self employed or not?',['Yes','No'])
+ApplicantIncome=st.number_input('Enter your income..', min_value=0)
+CoapplicantIncome=st.number_input('Enter your co-applicant income..', min_value=0)
+LoanAmount=st.number_input('Enter your loan amount',min_value=0)
+Loan_Amount_Term=st.number_input('Enter your loan amount term..',min_value=0)
+Credit_History=st.slider('Your credit history..',0,1,0)
+Property_Area=st.selectbox('What is your property location area?',['Urban','Rural','Semiurban'])
 df=return_df(Gender,
     Married,
     Dependents,
@@ -68,6 +68,6 @@ if st.button('Submit'):
 	preds=model.predict(df)
 	predictions=preds[0]
 	if predictions=='Y':
-		st.write('Approved')
+		st.write('Loan Approved')
 	elif predictions=='N':
-		st.write('Not Approved')
+		st.write('Loan Rejected')
